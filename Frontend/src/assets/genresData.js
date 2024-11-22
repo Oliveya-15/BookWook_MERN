@@ -1,4 +1,3 @@
-
 export const genresData = [
     { name: "Story", image: "/genres/story.png" },
     { name: "Horror", image: "/genres/horror.png" },
@@ -7,4 +6,4 @@ export const genresData = [
     { name: "Psychology", image: "/genres/psychology.png" },
     { name: "Comedy", image: "/genres/comedy.png" },
   ];
-  
+

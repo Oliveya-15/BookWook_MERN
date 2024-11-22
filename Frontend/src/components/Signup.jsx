@@ -3,11 +3,12 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Login from "./Login";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import toast from "react-hot-toast";
+import toast from "react-hot-toast";    
+
 function Signup() {
   const location = useLocation();
-  const navigate = useNavigate();
-  const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate(); // Hook to navigate to different routes
+  const from = location.state?.from?.pathname || "/"; // Capture the previous route, if applicable
   const {
     register,
     handleSubmit,
@@ -26,9 +27,13 @@ function Signup() {
         console.log(res.data);
         if (res.data) {
           toast.success("Signup Successfully");
-          navigate(from, { replace: true });
+          localStorage.setItem("Users", JSON.stringify(res.data.user));
+
+          // Redirect the user to the home page after successful signup
+          setTimeout(() => {
+            navigate("/"); // You can change "/home" to whatever page you want the user to be redirected to
+          }, 1000);
         }
-        localStorage.setItem("Users", JSON.stringify(res.data.user));
       })
       .catch((err) => {
         if (err.response) {
@@ -37,10 +42,11 @@ function Signup() {
         }
       });
   };
+
   return (
     <>
       <div className="flex h-screen items-center justify-center">
-        <div className=" w-[600px] ">
+        <div className="w-[600px]">
           <div className="modal-box">
             <form onSubmit={handleSubmit(onSubmit)} method="dialog">
               {/* if there is a button in form, it will close the modal */}
@@ -129,4 +135,3 @@ function Signup() {
 }
 
 export default Signup;
-

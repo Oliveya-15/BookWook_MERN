@@ -1,20 +1,15 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
-import Course from '../components/Course'
-import Course from '../components/Footer'
-
-const Courses = () => {
+import React from "react";
+import Navbar from "../components/Navbar";
+import Course from "../components/Course";
+function Courses() {
   return (
     <>
-    <div>
-        <Navbar/>
-        <div className='min-h-screen'>
-        <Course/>
-        </div>
-        <Footer/>
-    </div>
+      <Navbar />
+      <div className=" min-h-screen">
+        <Course />
+      </div>
     </>
   );
 }
 
-export default Courses
+export default Courses;
