@@ -1,31 +1,22 @@
-
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const MyProfile = () => {
-  // Initialize userData with values from localStorage or default values
-  const [userData, setUserData] = useState(() => {
-    const savedData = localStorage.getItem("userData");
-    return savedData ? JSON.parse(savedData) : {
-      name: "",
-      image: "/profileimages/female.jpg", // Default image
-      email: "",
-      phone: "",
-      address: {
-        line1: "",
-        line2: "",
-      },
-      gender: "",
-      dob: "",
-    };
+  // Initialize userData with default values
+  const [userData, setUserData] = useState({
+    name: "",
+    image: "/profileimages/female.jpg", // Default image
+    email: "",
+    phone: "",
+    address: {
+      line1: "",
+      line2: "",
+    },
+    gender: "",
+    dob: "",
   });
 
   const [isEdit, setIsEdit] = useState(true); // Start with edit mode
   const [showImageOptions, setShowImageOptions] = useState(false);
-
-  // Update localStorage whenever userData changes
-  useEffect(() => {
-    localStorage.setItem("userData", JSON.stringify(userData));
-  }, [userData]);
 
   const handleImageSelect = (imagePath) => {
     setUserData((prev) => ({ ...prev, image: imagePath }));
@@ -190,5 +181,4 @@ const MyProfile = () => {
   );
 };
 
-export default MyProfile;  
-
+export default MyProfile;

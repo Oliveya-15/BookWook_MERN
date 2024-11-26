@@ -1,11 +1,9 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import toast from "react-hot-toast";
-
 function Login() {
-  const navigate = useNavigate(); // Hook to navigate to different routes
   const {
     register,
     handleSubmit,
@@ -25,8 +23,7 @@ function Login() {
           toast.success("Loggedin Successfully");
           document.getElementById("my_modal_3").close();
           setTimeout(() => {
-            // Using navigate to redirect to the home page
-            navigate("/"); // Redirects to home page
+            window.location.reload();
             localStorage.setItem("Users", JSON.stringify(res.data.user));
           }, 1000);
         }
@@ -39,7 +36,6 @@ function Login() {
         }
       });
   };
-
   return (
     <div>
       <dialog id="my_modal_3" className="modal">
